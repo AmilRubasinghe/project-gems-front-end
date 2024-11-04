@@ -252,8 +252,8 @@ const HomePage = () => {
           </div>
         </header> */}
 
-        <div>
-          <Navbar />
+        <div className="">
+        <Navbar />
         </div>
 
         {/* Main Content */}

@@ -253,9 +253,9 @@ const HomePage = () => {
         </header> */}
 
         <div>
-        <Navbar />
+          <Navbar />
         </div>
-  
+
         {/* Main Content */}
         <main>
           {/* Hero Section */}
@@ -264,7 +264,7 @@ const HomePage = () => {
               <p className="text-[25px] sm:text-[40px] font-serif font-bold text-gray-500 mt-5">
                 Welcome, {user ? user.fullname : "Guest"}!
               </p>
-  
+
               <h1 className="text-[2.5rem] sm:text-[3rem] font-bold">
                 <span className="text-primary">INNOVATIVE</span> VEHICLE
                 <br />
@@ -315,7 +315,7 @@ const HomePage = () => {
               />
             </div>
           </section>
-  
+
           {/* What We Do Section */}
           <section className="flex overflow-x-hidden flex-col sm:flex-row justify-center items-center px-4 sm:px-10 lg:px-20">
             <div className="mb-4 sm:mb-0 w-full max-w-96">
@@ -354,15 +354,15 @@ const HomePage = () => {
           </section>
 
           {/* History Section */}
-          <section className="history-section-container relative">
-          <div className=" hidden sm:block absolute top-0 right-0 -translate-y-1/2">
-            <img
-              className="ImageC"
-              src={ImageC}
-              style={{ width: "auto", height: "700px" }}
-              alt="Wheel Set"
-            />
-          </div>
+          <section className="history-section-container relative mt-10">
+            <div className=" hidden sm:block absolute top-0 right-0 -translate-y-1/2">
+              <img
+                className="ImageC"
+                src={ImageC}
+                style={{ width: "auto", height: "700px" }}
+                alt="Wheel Set"
+              />
+            </div>
             <h2
               style={{ color: "#13496b" }}
               className="text-[48px] uppercase font-semibold text-3xl mt-20"
@@ -383,7 +383,10 @@ const HomePage = () => {
           </section>
 
           {/* Our Services Section */}
-          <section className="p-5">
+          <section className="p-5 relative">
+            <div className="absolute bottom-0 left-0 translate-y-1/2 z-0">
+              <img src={ImageH} alt="Service H" className="h-[800px] z-0" />
+            </div>
             <h2
               style={{ color: "#13496b" }}
               className="flex justify-center text-[48px] items-center uppercase font-semibold text-3xl mb-4 p-2"
@@ -391,19 +394,21 @@ const HomePage = () => {
               Our Services
             </h2>
 
-            <div className="flex flex-wrap justify-center px-3 space-x-4">
+            <div className="flex  z-20 relative justify-center flex-col lg:flex-row px-3 gap-5">
               {/* Service D */}
               <div
-                className="service-card flex flex-col items-center justify-between w-[350px] h-[750px] p-4 bg-white rounded-lg shadow-md  mb-6"
+                className="service-card flex flex-col items-center gap-5 p-4 bg-white rounded-lg shadow-md  mb-6"
                 style={{ boxShadow: "0 0 10px 0 rgba(19, 73, 107, 0.6)" }}
               >
-                <img
-                  src={ImageD}
-                  alt="Service D"
-                  className="w-full h-full object-cover rounded-lg max-w-52 aspect-square"
-                />
+                <div className="w-full md:w-52 aspect-square">
+                  <img
+                    src={ImageD}
+                    alt="Service D"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <p
-                  className="service-description text-center mt-auto text-[24px]"
+                  className="service-description text-center text-[24px]"
                   style={{ color: "#13496b" }}
                 >
                   ADMIN
@@ -425,15 +430,18 @@ const HomePage = () => {
               {/* Service E */}
               <div
                 style={{ boxShadow: "0 0 10px 0 rgba(19, 73, 107, 0.6)" }}
-                className="service-card flex flex-col items-center justify-between w-[350px] h-[800px] p-4 bg-white rounded-lg shadow-xl mb-6"
+                className="service-card ml-0 flex flex-col items-center gap-5 p-4 bg-white rounded-lg shadow-xl mb-6"
               >
-                <img
-                  src={ImageE}
-                  alt="Service E"
-                  className="w-full h-full object-cover rounded-lg max-w-52 aspect-square"
-                />
+                <div className="w-full md:w-52 aspect-square overflow-hidden">
+
+                  <img
+                    src={ImageE}
+                    alt="Service E"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <p
-                  className="service-description text-center mt-auto text-[24px]"
+                  className="service-description text-center text-[24px]"
                   style={{ color: "#13496b" }}
                 >
                   CUSTOMER
@@ -456,15 +464,17 @@ const HomePage = () => {
               {/* Service F */}
               <div
                 style={{ boxShadow: "0 0 10px 0 rgba(19, 73, 107, 0.6)" }}
-                className="service-card flex flex-col items-center justify-between w-[350px] h-[780px] p-4 bg-white rounded-lg shadow-md mb-6"
+                className="service-card flex flex-col items-center gap-5 p-4 z-10 bg-white rounded-lg shadow-md mb-6"
               >
-                <img
-                  src={ImageF}
-                  alt="Service F"
-                  className="w-full h-full object-cover rounded-lg max-w-52 aspect-square"
-                />
+                <div className="w-full md:w-52 aspect-square overflow-hidden">
+                  <img
+                    src={ImageF}
+                    alt="Service F"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <p
-                  className="service-description text-center mt-auto text-[24px]"
+                  className="service-description text-center text-[24px]"
                   style={{ color: "#13496b" }}
                 >
                   MECHANIC
@@ -485,11 +495,6 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-          <div className="relative sm:block">
-            <div className="absolute h-[800px] w-[400px] top-[-450px] ">
-              <img src={ImageH} alt="Service H" className="h-[800px]" />
-            </div>
-          </div>
 
           <button
             className="back-to-top"
@@ -511,7 +516,7 @@ const HomePage = () => {
             <div className="w-full flex flex-col sm:flex-row justify-center items-center bg-transparent relative z-[1]">
               <div
                 style={{ boxShadow: "0 0 20px 0 rgba(19, 73, 107, 0.2)" }}
-                className="bg-white bg-opacity-40 shadow-2xl rounded-3xl w-full sm:w-[60%] p-4 sm:p-[50px] "
+                className="bg-white bg-opacity-40 shadow-2xl rounded-3xl w-full mx-5 lg:mx-0 lg:w-[60%] p-4 sm:p-[50px] "
               >
                 <p
                   className="text-center underline text-[22px] sm:text-[26px] font-bold"

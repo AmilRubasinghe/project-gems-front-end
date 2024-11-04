@@ -52,9 +52,15 @@ const ASideBar = () => {
           >
             Store
           </Link>
-          <button className="bg-white text-[#204a64] text-center w-[100%] p-[10px] rounded-lg m-2 border border-black hover:bg-green-500 hover:text-white uppercase">
+          <Link
+            to="/admin/settings"
+            className="bg-white text-[#204a64] text-center w-[100%] p-[10px] rounded-lg m-2 border border-black hover:bg-green-500 hover:text-white"
+          >
             Setting
-          </button>
+          </Link>
+          {/* <button className="bg-white text-[#204a64] text-center w-[100%] p-[10px] rounded-lg m-2 border border-black hover:bg-green-500 hover:text-white uppercase">
+            Setting
+          </button> */}
           <Link
             onClick={handleLogout}
             className="bg-white text-[#204a64] text-center w-[100%] p-[10px] rounded-lg m-2 border border-black hover:bg-green-500 hover:text-white"

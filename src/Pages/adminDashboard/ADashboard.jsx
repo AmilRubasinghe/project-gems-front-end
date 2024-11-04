@@ -1,5 +1,5 @@
-import Widget from './adminComponent/widget';
-import BookingsEarningsGraph from './adminComponent/BookingsEarningsGraph';
+import Widget from "./adminComponent/Widget";
+import BookingsEarningsGraph from "./adminComponent/BookingsEarningsGraph";
 import "./ADashboard.css"; // Add your own styling
 
 const ADashboard = () => {

@@ -28,7 +28,7 @@
       left: 55%;
       width: 50%;
       height: 50%;
-      background: url('D:\react\autocare\src\assets\photos\logo.png') no-repeat center center; /* Update with your actual image path */
+      background: url('../assets/photos/logo.png') no-repeat center center; /* Update with your actual image path */
       background-size: contain;
   }
   

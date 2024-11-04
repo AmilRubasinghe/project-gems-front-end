@@ -33,6 +33,7 @@ import UsersDetails from "./Pages/adminDashboard/adminComponent/UsersDetails.jsx
 import OffersPage from "./Pages/Offerpage.jsx";
 import ServicePage from "./Pages/ServicePage.jsx"
 import MechanicUserProfile from "./Pages/mechanicDashboard/MechanicUserProfile.jsx";
+import SettingsPage from "./Pages/adminDashboard/adminComponent/SettingsPage.jsx";
 
 function App() {
   return (
@@ -85,6 +86,7 @@ function AdminLayout() {
           <Route path="additem" element={<AddItem />} />
           <Route path="inventory" element={<InventorySection />} />
           <Route path="users" element={<UsersDetails />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Routes>
       </div>
     </div>

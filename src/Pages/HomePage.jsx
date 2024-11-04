@@ -25,6 +25,7 @@ import { FaArrowRightFromBracket } from "react-icons/fa6";
 // import ServicesDropdown from "../components/ServiceDropdown";
 import ChatButton from "../components/ChatButton";
 import ChatModal from "../components/ChatModal";
+import Navbar from "../components/Navbar";
 
 const HomePage = () => {
   const { user, setUser, fetchUser } = useAuth();
@@ -185,7 +186,7 @@ const HomePage = () => {
       )}
       <div className="home-page">
         {/* Header */}
-        <header className="header px-4 sm:px-10 lg:px-20">
+        {/* <header className="header px-4 sm:px-10 lg:px-20">
           <div className="flex w-full justify-between items-center">
             <img
               className="Logo"
@@ -235,7 +236,7 @@ const HomePage = () => {
                       className="btn text-white px-3 w-[100px] rounded hover:bg-blue-700 h-[40px] bg-primary"
                       onClick={handleLogout}
                     >
-                      LOGOUT
+                      Log Out
                     </button>
                   </>
                 ) : (
@@ -243,13 +244,17 @@ const HomePage = () => {
                     className="sign-up-btn1 px-4 py-1 rounded hover:bg-blue-700"
                     onClick={handleSignup}
                   >
-                    SIGN UP
+                    Sign Up
                   </button>
                 )}
               </div>
             </nav>
           </div>
-        </header>
+        </header> */}
+
+        <div>
+        <Navbar />
+        </div>
   
         {/* Main Content */}
         <main>

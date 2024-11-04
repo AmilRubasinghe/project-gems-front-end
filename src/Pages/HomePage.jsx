@@ -235,7 +235,7 @@ const HomePage = () => {
                       className="btn text-white px-3 w-[100px] rounded hover:bg-blue-700 h-[40px] bg-primary"
                       onClick={handleLogout}
                     >
-                      LOGOUT
+                      Log Out
                     </button>
                   </>
                 ) : (
@@ -243,7 +243,7 @@ const HomePage = () => {
                     className="sign-up-btn1 px-4 py-1 rounded hover:bg-blue-700"
                     onClick={handleSignup}
                   >
-                    SIGN UP
+                    Sign Up
                   </button>
                 )}
               </div>

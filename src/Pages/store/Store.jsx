@@ -117,7 +117,7 @@ const Store = () => {
       "quantity": 25,
       "photo": "https://i.ebayimg.com/images/g/46MAAOSwopBmUMu3/s-l400.jpg"
     },
-    
+
     {
       "name": "Turbocharger",
       "code": "AC016",
@@ -140,7 +140,7 @@ const Store = () => {
       "quantity": 20,
       "photo": "https://ithurukaramu.lk/wp-content/uploads/2020/05/unnamed-39.jpg"
     },
-  
+
     {
       "name": "Fuel Injector",
       "code": "AC019",
@@ -169,7 +169,7 @@ const Store = () => {
       "quantity": 10,
       "photo": "https://interlinksprayers.net/cdn/shop/products/gearbox_worm_wr3_1024x1024.jpg?v=1539649995"
     },
-  
+
     {
       "name": "Suspension Spring",
       "code": "AC023",
@@ -191,7 +191,7 @@ const Store = () => {
       "quantity": 10,
       "photo": "https://greasemonkey.lk/wp-content/uploads/2018/04/Mobil-ATF-3309.png"
     },
-    
+
     {
       "name": "Drive Shaft",
       "code": "AC026",
@@ -220,8 +220,8 @@ const Store = () => {
       "quantity": 3,
       "photo": "https://colombomall.lk/wp-content/uploads/2024/04/21VkKfUFWHL.jpg"
     },
-    
-   
+
+
     {
       "name": "Control Arm",
       "code": "AC030",
@@ -236,8 +236,8 @@ const Store = () => {
       "quantity": 0,
       "photo": "https://bikesd.lk/files/productimages/photo/164a7d1c-e4f4-4fc2-84be-ee8de6cc57e0/large_carburetter%20assy%20PUL%20150%20UG3-UG4%20OE%20cbbpe%20107.jpg"
     },
-    
-  
+
+
     {
       "name": "Cylinder Head",
       "code": "AC032",
@@ -266,7 +266,7 @@ const Store = () => {
       "quantity": 8,
       "photo": "https://i.ebayimg.com/images/g/by4AAOSw3Sdd-iLK/s-l400.jpg"
     },
-    
+
     {
       "name": "EGR Valve",
       "code": "AC036",
@@ -306,7 +306,7 @@ const Store = () => {
       }
     };
 
-      fetchParts();
+    fetchParts();
   }, []);
 
 
@@ -329,16 +329,16 @@ const Store = () => {
       }
       return p;
     });
-  
+
     // Update the parts array state
     setParts(updatedParts);
-  
+
     // Optionally set the added item
     setAddedItem(part.code);
 
-  console.log(setAddedItem);
+    console.log(setAddedItem);
 
-  
+
     // Show success alert
     Swal.fire({
       position: "top-end",
@@ -359,38 +359,38 @@ const Store = () => {
   //   setParts(updatedParts);
   // };
 
-  
+
 
   return (
-    <div className="car-parts">
-     <div className="mt-5">
-      <Navbar />
-     </div>
-      
-
-      {parts.map((part) => (
-        <div key={part.code} className="part-item">
-          <div className="image-container">
-            <img src={part.photo} alt={part.name} className="part-image" />
-            <p className="part-name">{part.name}</p>
-          </div>
-          <div className="part-details">
-            <p>Code: {part.code}</p> 
-            {part.quantity === 0 ? (
-              <p className="bg-red-600 text-white text-center w-[120px] rounded">
-                Out of Stock
-              </p>
-            ) : (
-              <p>Qty    : {part.quantity} pcs</p>
-            )}
-            <p>Price: Rs {part.price}</p>
-          </div>
-          <div className="actions">
-            <button onClick={() => handleAdd(part)}>Add Item</button>
+    <div className="">
+      <div className="mt-5">
+        <Navbar />
+      </div>
+      <div className="pt-10 flex flex-wrap gap-5 justify-center">
+        {parts.map((part) => (
+          <div key={part.code} className="flex flex-col md:flex-row items-center justify-start gap-2 py-10 px-5 w-full mx-5 md:mx-0 md:w-max border hover:shadow-lg cursor-pointer rounded-xl">
+            <div className="w-52 h-52">
+              <img src={part.photo} alt={part.name} className="w-full h-full object-cover hover:scale-110" />
+            </div>
+            <div className="w-full flex flex-col gap-5">
+              <div className="px-10">
+                <p className="">{part.name}</p>
+                <p>Code: {part.code}</p>
+                {part.quantity === 0 ? (
+                  <p className="bg-red-600 text-white text-center w-[120px] rounded">
+                    Out of Stock
+                  </p>
+                ) : (
+                  <p>Qty    : {part.quantity} pcs</p>
+                )}
+                <p>Price: Rs {part.price}</p>
+              </div>
+              <button className="px-4 py-2 w-full bg-red-500 rounded-full text-white" onClick={() => handleAdd(part)}>Add Item</button>
+            </div>
             {/* <button onClick={() => handleDelete(part.code)}>Delete Item</button> */}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

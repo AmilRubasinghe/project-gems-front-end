@@ -6,7 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 function Bookingdetails() {
-  const { user, addedItem } = useAuth(); // Get addedItem from AuthContext
+  const { user, addedItem } = useAuth();
   const [allMechanics, setAllMechanics] = useState([]);
   const [userName, setUserName] = useState(user?.fullname || "");
   const [userEmail, setUserEmail] = useState(user?.email || "");
@@ -60,7 +60,6 @@ function Bookingdetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simple form validation
     if (
       !form.vehicleMake ||
       !form.vehicleModel ||
@@ -104,7 +103,6 @@ function Bookingdetails() {
         body: JSON.stringify(bookingData),
       });
       
-
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Booking creation failed:", errorData);
@@ -112,12 +110,9 @@ function Bookingdetails() {
       }
       const responseData = await response.json();
 
-      // Access the new booking's _id
       if (response.status === 200) {
         bookingId = responseData.data._id;
-        // console.log("New booking ID:", bookingId);
       }
-      // console.log("Booking created successfully", user._id);
 
       const sendNotification = await fetch(
         `${serverHost}/api/notification/createNotification/${user._id}`,
@@ -134,7 +129,6 @@ function Bookingdetails() {
           }),
         }
       );
-      // console.log("Notification response:", sendNotification);
 
       if (!sendNotification.ok) {
         const notificationError = await sendNotification.json();
@@ -190,10 +184,10 @@ function Bookingdetails() {
     return times;
   };
 
-  const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split("T")[0];
 
   const handleCancel = (e) => {
-    e.preventDefault(); // Prevent default behavior if needed
+    e.preventDefault();
 
     Swal.fire({
       title: "Are you sure?",
@@ -206,185 +200,173 @@ function Bookingdetails() {
       cancelButtonColor: "#d33",
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/"); // Redirect to home or another relevant page after cancellation
+        navigate("/");
         Swal.fire("Cancelled!", "Your booking has been cancelled.", "success");
       }
     });
   };
 
   return (
-    <main className="booking-details flex justify-center text-white relative">
+    <main className="booking-details flex justify-center text-white relative p-4 md:p-8">
       <div className="background-design"></div>
-      <div className="app-booking pb-4">
-        <h1>SLOT BOOKING DETAILS</h1>
-        <div className="container-booking bg-gray-500">
-          <form onSubmit={handleSubmit}>
-            <div className="left">
-              <div className="form-group">
-                <label>Vehicle Make</label>
-                <input
-                  className="input-area"
-                  type="text"
-                  name="vehicleMake"
-                  placeholder=" Ex: Hybrid"
-                  value={form.vehicleMake}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Vehicle Model</label>
-                <input
-                  className="input-area"
-                  type="text"
-                  name="vehicleModel"
-                  placeholder=" Ex: Vezel"
-                  value={form.vehicleModel}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Vehicle Number</label>
-                <input
-                  className="input-area"
-                  type="text"
-                  name="vehicleNumber"
-                  placeholder=" Ex: CAB - 1234"
-                  value={form.vehicleNumber}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Manufactured Year</label>
-                <input
-                  className="input-area"
-                  type="text"
-                  name="manufacturedYear"
-                  placeholder=" Ex: 2040"
-                  value={form.manufacturedYear}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-2">
-                <label className="block text-md font-bold mb-2">
-                  Preferred Date:
-                </label>
-                <input
-                  type="date"
-                  name="preferredDate"
-                  value={form.preferredDate}
-                  onChange={handleChange}
-                  min={today} // Set minimum date to today
-                  className="shadow appearance-none border rounded-lg w-[300px]  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-mdfont-bold mb-2">
-                  Preferred Time:
-                </label>
-                <select
-                  name="preferredTime"
-                  value={form.preferredTime}
-                  onChange={handleChange}
-                  className="shadow appearance-none border rounded-lg w-[300px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                >
-                  <option value="">Select a time</option>
-                  {generateTimeOptions().map((time) => (
-                    <option key={time} value={time}>
-                      {time}
-                    </option>
-                  ))}
-                </select>
-              </div>
+      <div className="app-booking pb-4 w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+        <h1 className="text-2xl font-bold text-center mb-6">Slot Booking Details</h1>
+        <div className="container-booking">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex flex-col">
+              <label>Vehicle Make</label>
+              <input
+                className="input-area"
+                type="text"
+                name="vehicleMake"
+                placeholder="Ex: Hybrid"
+                value={form.vehicleMake}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Vehicle Model</label>
+              <input
+                className="input-area"
+                type="text"
+                name="vehicleModel"
+                placeholder="Ex: Vezel"
+                value={form.vehicleModel}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Vehicle Number</label>
+              <input
+                className="input-area"
+                type="text"
+                name="vehicleNumber"
+                placeholder="Ex: CAB - 1234"
+                value={form.vehicleNumber}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Manufactured Year</label>
+              <input
+                className="input-area"
+                type="text"
+                name="manufacturedYear"
+                placeholder="Ex: 2040"
+                value={form.manufacturedYear}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Preferred Date</label>
+              <input
+                type="date"
+                name="preferredDate"
+                value={form.preferredDate}
+                onChange={handleChange}
+                min={today}
+                className="input-area"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Preferred Time</label>
+              <select
+                name="preferredTime"
+                value={form.preferredTime}
+                onChange={handleChange}
+                className="input-area"
+              >
+                <option value="">Select a time</option>
+                {generateTimeOptions().map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            <div className="right">
-              <div className="form-group">
-                <label>Vehicle Owner Name</label>
-                <input
-                  className="input-area"
-                  type="text"
-                  name="ownerName"
-                  placeholder=" Ex: Mr. Perera"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Mobile Number</label>
-                <input
-                  className="input-area"
-                  type="text"
-                  name="mobileNumber"
-                  placeholder=" Ex: 078-7587700"
-                  value={mobileNumber}
-                  onChange={(e) => setMobileNumber(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Selected Item</label>{" "}
-                {/* Changed label to Selected Item */}
-                <input
-                  className="input-area"
-                  type="text"
-                  name="selectedItem"
-                  placeholder="Selected Item"
-                  value={addedItem} // Use addedItem from context
-                  readOnly
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  className="input-area"
-                  type="email"
-                  name="email"
-                  placeholder=" Ex: abcdefgh@gmail.com"
-                  value={userEmail}
-                  onChange={(e) => setUserEmail(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Message</label>
-                <textarea
-                  className="textarea-last"
-                  name="message"
-                  placeholder=" Enter your message here"
-                  value={form.message}
-                  onChange={handleChange}
-                ></textarea>
-              </div>
+            <div className="flex flex-col">
+              <label>Vehicle Owner Name</label>
+              <input
+                className="input-area"
+                type="text"
+                name="ownerName"
+                placeholder="Ex: Mr. Perera"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </div>
-            <div className="flex flex-col md:flex-row justify-between w-full px-8 mb-4 items-center">
-              {/* <h2 className="text-center text-lg font-bold mb-4 md:mb-0">
-                Please select a mechanic
-              </h2> */}
-              <div className="flex flex-wrap justify-center mt-2 w-full md:w-auto">
-                <select
-                  className="dropdown rounded-lg text-gray-700 p-2 w-[300px] "
-                  value={selectedMechanic}
-                  onChange={handleMechanicChange}
-                >
-                  <option className="text-gray-700" value="">Select a Mechanic</option>
-                  {allMechanics.map((mechanic) => (
-                    <option key={mechanic._id} className="text-gray-700" value={mechanic._id}>
-                      {mechanic.firstname} ({mechanic.email})
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div className="flex flex-col">
+              <label>Mobile Number</label>
+              <input
+                className="input-area"
+                type="text"
+                name="mobileNumber"
+                placeholder="Ex: 078-7587700"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+              />
             </div>
-            <div className="flex justify-center  ">
+
+            <div className="flex flex-col">
+              <label>Selected Item</label>
+              <input
+                className="input-area"
+                type="text"
+                name="selectedItem"
+                value={addedItem}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Email</label>
+              <input
+                className="input-area"
+                type="email"
+                name="email"
+                placeholder="Ex: abcdefgh@gmail.com"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="flex flex-col md:col-span-2">
+              <label>Message</label>
+              <textarea
+                className="textarea-last"
+                name="message"
+                placeholder="Enter your message here"
+                value={form.message}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+
+            <div className="flex flex-col md:col-span-2">
+              <label>Select a Mechanic</label>
+              <select
+                className="dropdown rounded-lg text-gray-700 p-2 w-full"
+                value={selectedMechanic}
+                onChange={handleMechanicChange}
+              >
+                <option className="text-gray-700" value="">
+                  Select a Mechanic
+                </option>
+                {allMechanics.map((mechanic) => (
+                  <option key={mechanic._id} className="text-gray-700" value={mechanic._id}>
+                    {mechanic.firstname} ({mechanic.email})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-4 md:col-span-2">
               <button
                 onClick={handleCancel}
-                className="bg-red-500 hover:bg-red-300 text-white p-3 w-full ml-8 text-uppercase rounded-[10px] md:w-[300px]"
+                className="bg-red-500 hover:bg-red-300 text-white p-3 w-full rounded-lg"
               >
                 Cancel Booking
               </button>
-              <button type="submit" className="btn">
+              <button type="submit" className="btn bg-blue-500 hover:bg-blue-400 text-white p-3 w-full rounded-lg">
                 Book Now
               </button>
             </div>

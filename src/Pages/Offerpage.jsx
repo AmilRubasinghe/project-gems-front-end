@@ -43,9 +43,10 @@ const OffersPage = () => {
   ];
 
   return (
-    
-    <div className="offers-container">
+    <div>
       <div><Navbar/></div>
+    <div className="offers-container">
+      
       
       <div className="offers-header">
         <h1>Special Offers</h1>
@@ -83,6 +84,7 @@ const OffersPage = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

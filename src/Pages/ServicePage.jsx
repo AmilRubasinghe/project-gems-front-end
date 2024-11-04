@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 const ServicesPage = () => {
   return (
     <div className="flex flex-col">
-      <div className="">
+      <div className="w-full">
       <Navbar />
       </div>
       <div className="services-background">

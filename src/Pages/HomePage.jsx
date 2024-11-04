@@ -252,7 +252,7 @@ const HomePage = () => {
           </div>
         </header> */}
 
-        <div>
+        <div className="">
         <Navbar />
         </div>
   

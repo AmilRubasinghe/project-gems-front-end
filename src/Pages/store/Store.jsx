@@ -372,20 +372,22 @@ const Store = () => {
             <div className="w-52 h-52">
               <img src={part.photo} alt={part.name} className="w-full h-full object-cover hover:scale-110" />
             </div>
-            <div className="px-10">
-              <p className="">{part.name}</p>
-              <p>Code: {part.code}</p>
-              {part.quantity === 0 ? (
-                <p className="bg-red-600 text-white text-center w-[120px] rounded">
-                  Out of Stock
-                </p>
-              ) : (
-                <p>Qty    : {part.quantity} pcs</p>
-              )}
-              <p>Price: Rs {part.price}</p>
-            </div>
+            <div className="w-full flex flex-col gap-5">
+              <div className="px-10">
+                <p className="">{part.name}</p>
+                <p>Code: {part.code}</p>
+                {part.quantity === 0 ? (
+                  <p className="bg-red-600 text-white text-center w-[120px] rounded">
+                    Out of Stock
+                  </p>
+                ) : (
+                  <p>Qty    : {part.quantity} pcs</p>
+                )}
+                <p>Price: Rs {part.price}</p>
+              </div>
               <button className="px-4 py-2 w-full bg-red-500 rounded-full text-white" onClick={() => handleAdd(part)}>Add Item</button>
-              {/* <button onClick={() => handleDelete(part.code)}>Delete Item</button> */}
+            </div>
+            {/* <button onClick={() => handleDelete(part.code)}>Delete Item</button> */}
           </div>
         ))}
       </div>

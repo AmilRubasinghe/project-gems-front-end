@@ -259,7 +259,7 @@ const HomePage = () => {
         {/* Main Content */}
         <main>
           {/* Hero Section */}
-          <section className="hero-section container mx-auto px-4 sm:px-10 lg:px-20">
+          <section className=" w-full container mx-auto px-4 sm:px-10 lg:px-20">
             <div className="hero-content text-center mt-1 sm:text-left">
               <p className="text-[25px] sm:text-[40px] font-serif font-bold text-gray-500 mt-5">
                 Welcome, {user ? user.fullname : "Guest"}!
@@ -317,12 +317,11 @@ const HomePage = () => {
           </section>
   
           {/* What We Do Section */}
-          <section className="flex flex-col sm:flex-row justify-center items-center px-4 sm:px-10 lg:px-20">
-            <div className="mechanic-image mb-4 sm:mb-0">
+          <section className="flex overflow-x-hidden flex-col sm:flex-row justify-center items-center px-4 sm:px-10 lg:px-20">
+            <div className="mb-4 sm:mb-0 w-full max-w-96">
               <img
-                className="ImageB"
+                className="w-full h-full object-cover"
                 src={ImageB}
-                style={{ width: "350px", height: "300px" }}
                 alt="Mechanic"
               />
             </div>
@@ -354,7 +353,9 @@ const HomePage = () => {
             </div>
           </section>
 
-          <div className="WheelSet hidden sm:block">
+          {/* History Section */}
+          <section className="history-section-container relative">
+          <div className=" hidden sm:block absolute top-0 right-0 -translate-y-1/2">
             <img
               className="ImageC"
               src={ImageC}
@@ -362,16 +363,13 @@ const HomePage = () => {
               alt="Wheel Set"
             />
           </div>
-
-          {/* History Section */}
-          <section className="history-section-container">
             <h2
               style={{ color: "#13496b" }}
               className="text-[48px] uppercase font-semibold text-3xl mt-20"
             >
               History
             </h2>
-            <p className="history-text">
+            <p className="history-text px-5">
               Established in 2010, our vehicle service center began as a small
               family-owned garage with a passion for quality and customer care.
               Over the years, we have grown into a trusted name in vehicle
@@ -400,10 +398,9 @@ const HomePage = () => {
                 style={{ boxShadow: "0 0 10px 0 rgba(19, 73, 107, 0.6)" }}
               >
                 <img
-                  className="ImageD"
                   src={ImageD}
-                  style={{ width: "350px", height: "300px" }}
                   alt="Service D"
+                  className="w-full h-full object-cover rounded-lg max-w-52 aspect-square"
                 />
                 <p
                   className="service-description text-center mt-auto text-[24px]"
@@ -411,7 +408,7 @@ const HomePage = () => {
                 >
                   ADMIN
                 </p>
-                <p>
+                <p className="text-xs md:text-sm">
                   our administrator can deliver several benefits to enhance your
                   experience: efficient task management ensures your service
                   requests are handled promptly; real-time monitoring of repairs
@@ -431,10 +428,9 @@ const HomePage = () => {
                 className="service-card flex flex-col items-center justify-between w-[350px] h-[800px] p-4 bg-white rounded-lg shadow-xl mb-6"
               >
                 <img
-                  className="ImageE"
                   src={ImageE}
-                  style={{ width: "350px", height: "300px" }}
                   alt="Service E"
+                  className="w-full h-full object-cover rounded-lg max-w-52 aspect-square"
                 />
                 <p
                   className="service-description text-center mt-auto text-[24px]"
@@ -442,7 +438,7 @@ const HomePage = () => {
                 >
                   CUSTOMER
                 </p>
-                <p>
+                <p className="text-xs md:text-sm">
                   As a valued customer, you can easily manage your vehicle
                   service needs through our web application. Effortlessly book
                   appointments for various services at your convenience and
@@ -464,8 +460,8 @@ const HomePage = () => {
               >
                 <img
                   src={ImageF}
-                  style={{ width: "350px", height: "300px" }}
                   alt="Service F"
+                  className="w-full h-full object-cover rounded-lg max-w-52 aspect-square"
                 />
                 <p
                   className="service-description text-center mt-auto text-[24px]"
@@ -473,7 +469,7 @@ const HomePage = () => {
                 >
                   MECHANIC
                 </p>
-                <p>
+                <p className="text-xs md:text-sm">
                   Through the web application, our mechanics play a crucial role
                   in enhancing your service experience. They handle repairs with
                   precision and can update you on the progress of your vehicle
@@ -489,7 +485,7 @@ const HomePage = () => {
               </div>
             </div>
           </section>
-          <div className="relative  hidden sm:block">
+          <div className="relative sm:block">
             <div className="absolute h-[800px] w-[400px] top-[-450px] ">
               <img src={ImageH} alt="Service H" className="h-[800px]" />
             </div>
